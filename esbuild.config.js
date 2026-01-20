@@ -18,6 +18,9 @@ fs.writeFileSync('lib/config.js', `exports.baseUrl = '${baseUrl}'; exports.sdkVe
 
 const options = {
     entryPoints: {
+        // Use .js output from legacy TypeScript build (required for esbuild)
+        // Note: You must run 'npm run build:tsc' before running esbuild
+        // The new Vite build outputs .cjs/.mjs which are for NPM distribution only
         SDK: 'lib/index.js',
         iframe: 'lib/IframeCommunicator.js'
     },
