@@ -2,15 +2,30 @@
   "name": "@microsoft/omnichannel-amsclient",
   "version": "0.1.12-0",
   "description": "Microsoft Omnichannel AMSClient",
+  "type": "module",
   "files": [
     "lib/**/*"
   ],
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "main": "./lib/index.cjs",
+  "module": "./lib/index.mjs",
+  "types": "./lib/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.mjs",
+      "require": "./lib/index.cjs",
+      "default": "./lib/index.mjs"
+    }
+  },
   "scripts": {
+    "build": "vite build",
     "build:tsc": "tsc",
+    "build:legacy": "npm run build:tsc",
+    "dev": "vite build --watch",
     "test": "jest",
-    "lint": "eslint src --ext .ts"
+    "lint": "eslint src --ext .ts",
+    "clean": "rimraf lib",
+    "prebuild": "npm run clean"
   },
   "author": "Microsoft Corporation",
   "license": "MIT",
@@ -20,14 +35,18 @@
   },
   "homepage": "https://github.com/microsoft/omnichannel-amsclient#readme",
   "devDependencies": {
-    "@types/jest": "^26.0.24",
+    "@types/jest": "^30.0.0",
     "@typescript-eslint/eslint-plugin": "^4.28.5",
     "@typescript-eslint/parser": "^4.28.5",
     "cross-env": "^7.0.3",
     "esbuild": "^0.12.1",
     "eslint": "^7.31.0",
-    "jest": "^27.0.6",
-    "ts-jest": "^27.0.4",
-    "typescript": "^4.2.4"
+    "jest": "^30.2.0",
+    "jest-environment-jsdom": "^30.2.0",
+    "rimraf": "^6.1.2",
+    "ts-jest": "^29.4.6",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.1",
+    "vite-plugin-dts": "^4.5.4"
   }
 }

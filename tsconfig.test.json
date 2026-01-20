@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "lib": ["es2018", "dom"],
+        "sourceMap": true,
+        "target": "es2018",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "declaration": true,
+        "outDir": "./lib",
+        "strict": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "resolveJsonModule": true
+    },
+    "include": [
+        "src/**/*",
+        "__tests__/**/*"
+    ]
+}

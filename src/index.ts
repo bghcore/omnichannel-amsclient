@@ -10,26 +10,27 @@ declare global {
 
 export default createAMSClient;
 
-(() => {
-  if (typeof window === undefined) {
-    throw new Error(`window object not found`);
-  }
+// Only setup global namespace in browser environments
+// This allows the library to be used in Node.js/SSR contexts
+if (typeof window !== 'undefined') {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const win = window as any;
 
   // Check existence of global objects to avoid overwrite/clashing
-  if (!("Microsoft" in window)) {
-    window.Microsoft = {};
+  if (!("Microsoft" in win)) {
+    win.Microsoft = {};
   }
 
-  if (!("CRM" in window.Microsoft)) {
-    window.Microsoft.CRM = {};
+  if (!("CRM" in win.Microsoft)) {
+    win.Microsoft.CRM = {};
   }
 
-  if (!("Omnichannel" in window.Microsoft.CRM)) {
-    window.Microsoft.CRM.Omnichannel = {};
+  if (!("Omnichannel" in win.Microsoft.CRM)) {
+    win.Microsoft.CRM.Omnichannel = {};
   }
 
-  if (!("AMSClient" in window.Microsoft.CRM.Omnichannel)) {
-    window.Microsoft.CRM.Omnichannel.AMS = {
+  if (!("AMSClient" in win.Microsoft.CRM.Omnichannel)) {
+    win.Microsoft.CRM.Omnichannel.AMS = {
       SDK: {
         createAMSClient,
         FramedClient,
@@ -37,4 +38,4 @@ export default createAMSClient;
       }
     };
   }
-})();
+}
