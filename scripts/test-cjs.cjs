@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 /**
  * Test CommonJS import of the built library
- * Run with: node test-cjs.cjs
+ * Run with: node scripts/test-cjs.cjs
  */
 
-const createAMSClient = require('./lib/index.cjs');
+const createAMSClient = require('../lib/index.cjs');
 
 console.log('Testing CommonJS import...');
 

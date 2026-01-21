@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 /**
  * Test ESM import of the built library
- * Run with: node test-esm.mjs
+ * Run with: node scripts/test-esm.mjs
  */
 
-import createAMSClient from './lib/index.mjs';
+import createAMSClient from '../lib/index.mjs';
 
 console.log('Testing ESM import...');
 
