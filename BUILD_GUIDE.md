@@ -65,6 +65,19 @@ Rebuilds on file changes.
 npm test
 ```
 
+### Build Verification
+
+After building, verify the output works correctly:
+
+```bash
+# Verify CJS/ESM imports work
+node scripts/test-cjs.cjs
+node scripts/test-esm.mjs
+node scripts/test-integration.mjs
+```
+
+See [scripts/README.md](scripts/README.md) for details.
+
 ## Build Outputs Comparison
 
 | Build Type | Command | Output | Use Case |
