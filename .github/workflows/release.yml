@@ -17,7 +17,6 @@ env:
   AZURE_STORAGE_SAS_TOKEN: ${{ secrets.AZURE_STORAGE_SAS_TOKEN }}
   CACHE_CONTROL_HEADER: public, max-age=86400, s-maxage=259200, must-revalidate
   BASE_URL_PROD: https://comms.omnichannelengagementhub.com/ams
-  PUBLISH_TO_CDN : false
 
 jobs:
   build:
@@ -60,11 +59,9 @@ jobs:
           cp dist/iframe.min.js ${{ steps.read-package-json.outputs.version }}
           cp dist/iframe.html ${{ steps.read-package-json.outputs.version }}
       - name: Publish CDN package to versioned blob (prod)
-        if: ${{ env.PUBLISH_TO_CDN == 'true' }}
         run: |
           az storage blob upload-batch --overwrite --account-name "${{ env.AZURE_STORAGE_ACCOUNT }}" --source "${{ steps.read-package-json.outputs.version }}" --destination "${{ env.AZURE_STORAGE_CONTAINER }}/${{ steps.read-package-json.outputs.version }}" --content-cache-control "${{ env.CACHE_CONTROL_HEADER }}" --sas-token "${{ env.AZURE_STORAGE_SAS_TOKEN }}"
       - name: Publish CDN package to latest blob (prod)
-        if: ${{ env.PUBLISH_TO_CDN == 'true' }}
         run: |
           az storage blob upload-batch --overwrite --account-name "${{ env.AZURE_STORAGE_ACCOUNT }}" --source "${{ steps.read-package-json.outputs.version }}" --destination "${{ env.AZURE_STORAGE_CONTAINER }}/latest" --content-cache-control "${{ env.CACHE_CONTROL_HEADER }}" --sas-token "${{ env.AZURE_STORAGE_SAS_TOKEN }}"
       - name: Npm packaging
