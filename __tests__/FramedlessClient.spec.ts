@@ -6,6 +6,20 @@ import API from "../src/API";
 import FramedlessClient from "../src/FramedlessClient";
 
 describe('FramedlessClient', () => {
+    let consoleErrorSpy: jest.SpyInstance;
+    let consoleLogSpy: jest.SpyInstance;
+
+    beforeEach(() => {
+        // Suppress expected console.error about FramedMode in browser environment
+        consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
+        // Suppress console.log from error handling in test environment
+        consoleLogSpy = jest.spyOn(console, 'log').mockImplementation(() => {});
+    });
+
+    afterEach(() => {
+        consoleErrorSpy.mockRestore();
+        consoleLogSpy.mockRestore();
+    });
 
     it('FramedlessClient.setup() should be callable', async () => {
         const client = new FramedlessClient();
