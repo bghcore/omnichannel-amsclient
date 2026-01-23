@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [0.1.12] - 2026-01-22
+
+### Changed
+
+- Updated lodash and babel packages for component governance security
+
 ## [0.1.11] - 2025-08-06
 
 ### Changes
