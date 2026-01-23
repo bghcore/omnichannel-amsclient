@@ -10,6 +10,7 @@ All notable changes to this project will be documented in this file.
 
 - Updated lodash and babel packages for component governance security
 - Updated package-lock lockfileVersion to 3
+- Fixed all package vulnerabililties
 
 ## [0.1.11] - 2025-08-06
 
@@ -21,6 +22,7 @@ All notable changes to this project will be documented in this file.
 ## [0.1.10] - 2025-05-28
 
 ### Changed
+
 - Removal usage of `document.referrer` in `IframeCommunicator`
 
 ## [0.1.9] - 2025-05-22
