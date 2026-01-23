@@ -4,6 +4,19 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [0.1.12] - 2026-01-22
+
+### Changed
+
+- Updated lodash and babel packages for component governance security
+- Updated package-lock lockfileVersion to 3
+- Fixed all package vulnerabilities
+
+### Fixed
+
+- Suppressed console noise in FramedlessClient tests by mocking console.error and console.log
+- Tests now run cleanly without displaying expected warning messages (FramedMode browser environment warning and fetch blob errors in test environment)
+
 ## [0.1.11] - 2025-08-06
 
 ### Changes
@@ -14,6 +27,7 @@ All notable changes to this project will be documented in this file.
 ## [0.1.10] - 2025-05-28
 
 ### Changed
+
 - Removal usage of `document.referrer` in `IframeCommunicator`
 
 ## [0.1.9] - 2025-05-22
