@@ -10,7 +10,12 @@ All notable changes to this project will be documented in this file.
 
 - Updated lodash and babel packages for component governance security
 - Updated package-lock lockfileVersion to 3
-- Fixed all package vulnerabililties
+- Fixed all package vulnerabilities
+
+### Fixed
+
+- Suppressed console noise in FramedlessClient tests by mocking console.error and console.log
+- Tests now run cleanly without displaying expected warning messages (FramedMode browser environment warning and fetch blob errors in test environment)
 
 ## [0.1.11] - 2025-08-06
 
